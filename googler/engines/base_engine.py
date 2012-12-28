@@ -5,7 +5,10 @@ class BaseEngine(object):
         return []
 
     def get_start_pages(self, queries, num_of_pages):
-        return itertools.chain(self.make_pages_for_query(query, num_of_pages) for query in queries)
-    
+        result = []
+        for query in queries:
+            result.extend(self.make_pages_for_query(query, num_of_pages))
+        return result
+
     def make_pages_for_query(self, query, num_of_pages):
         return []

@@ -10,8 +10,8 @@ class GooglerPipeline(object):
     def __init__(self, output_dir):
         if not os.path.isabs(output_dir):
             self.output_dir = os.path.join(os.path.dirname(__file__), '..', output_dir)
-        log.msg("Will save pages to %s" % output_dir, log.INFO)
-        if os.path.exists(self.output_dir):
+        log.msg("Will save pages to %s" % self.output_dir, log.INFO)
+        if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
             log.msg("Creating %s..." % self.output_dir, log.DEBUG)
 

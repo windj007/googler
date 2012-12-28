@@ -12,10 +12,10 @@ class Google(BaseEngine):
                 ]
 
     def make_pages_for_query(self, query, num_of_pages):
-        encoded_query = urllib.urlencode(query)
-        result = ["http://www.google.com/search?q=%s&source=hp&btnG=%s&gbv=1" % \
+        encoded_query = urllib.urlencode({'q': query})
+        result = ["http://www.google.com/search?%s&source=hp&btnG=%s&gbv=1" % \
                   (encoded_query, "%CF%EE%E8%F1%EA+%E2+Google")]
         for page in range(1, num_of_pages):
-            result.append("http://www.google.com/search?q=%s&newwindow=1&gbv=1&ie=UTF-8&prmd=ivns&start=%d&sa=N" % \
+            result.append("http://www.google.com/search?%s&newwindow=1&gbv=1&ie=UTF-8&prmd=ivns&start=%d&sa=N" % \
                           (encoded_query, 10*page))
         return result

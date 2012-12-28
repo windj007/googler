@@ -12,9 +12,9 @@ class Yahoo(BaseEngine):
                 ]
 
     def make_pages_for_query(self, query, num_of_pages):
-        encoded_query = urllib.urlencode(query)
-        result = ["http://ru.search.yahoo.com/search?p=%s&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-722" % encoded_query]
+        encoded_query = urllib.urlencode({'p': query})
+        result = ["http://ru.search.yahoo.com/search?%s&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-722" % encoded_query]
         for page in range(1, num_of_pages):
-            result.append("http://ru.search.yahoo.com/search?p=%s&ei=UTF-8&fr=yfp-t-722&xargs=0&pstart=1&b=%d" % \
+            result.append("http://ru.search.yahoo.com/search?%s&ei=UTF-8&fr=yfp-t-722&xargs=0&pstart=1&b=%d" % \
                           (encoded_query, 10*page + 1))
         return result

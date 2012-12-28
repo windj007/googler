@@ -2,6 +2,10 @@ SPIDER_MODULES = ['googler.spiders']
 NEWSPIDER_MODULE = 'googler.spiders'
 USER_AGENT = 'w3m/0.5.3+cvs-1.1055' 
 
+DOWNLOADER_MIDDLEWARES = {
+    'googler.downloader.FilteringDownloader': 500,
+}
+
 ITEM_PIPELINES = [
                   'googler.pipelines.GooglerPipeline'
                   ]
@@ -13,6 +17,11 @@ LOG_LEVEL = 'INFO'
 DOWNLOAD_DELAY = 0.25
 
 PROXY_CHECK_TIMEOUT=5.0
+
+GOOGLER_ALLOWED_MIME = [
+                        r'text/html',
+                        r'application/pdf',
+                        ]
 
 GOOGLER_QUERIES = [
                    'rule-based systems'
