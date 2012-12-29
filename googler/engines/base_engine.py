@@ -1,4 +1,5 @@
-import itertools
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+import urlparse
 
 class BaseEngine(object):
     def get_result_extractors(self):
@@ -12,3 +13,8 @@ class BaseEngine(object):
 
     def make_pages_for_query(self, query, num_of_pages):
         return []
+    
+    def get_link_extractors_for_result(self, found_resource_url):
+        parsed = urlparse.urlparse(found_resource_url)
+        return [SgmlLinkExtractor(allow = [parsed.hostname],
+                                  allow_domains = [parsed.hostname])]

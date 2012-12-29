@@ -6,9 +6,7 @@ from base_engine import BaseEngine
 class Yahoo(BaseEngine):
     def get_result_extractors(self):
         return [
-                SgmlLinkExtractor(allow_domains = ["yahoo.com"],
-                                  restrict_xpaths = '//div[@id="web"]'
-                                  )
+                SgmlLinkExtractor(restrict_xpaths = '//body[@id="ysch"]//div[@class="res"]//h3')
                 ]
 
     def make_pages_for_query(self, query, num_of_pages):

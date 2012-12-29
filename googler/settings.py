@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 SPIDER_MODULES = ['googler.spiders']
 NEWSPIDER_MODULE = 'googler.spiders'
 USER_AGENT = 'w3m/0.5.3+cvs-1.1055' 
@@ -24,15 +26,22 @@ GOOGLER_ALLOWED_MIME = [
                         ]
 
 GOOGLER_QUERIES = [
-                   'rule-based systems'
+                   'порнуха',
+                   'жесткий трах смотреть онлайн бесплатно',
+                   'лесби видео онлайн бесплатно',
+                   'молоденькие видео онлайн бесплатно',
+                   'бдсм смотреть',
                    ]
-GOOGLER_PAGES_TO_GET_FROM_ENGINE = 5
+GOOGLER_PAGES_TO_GET_FROM_ENGINE = 10
 GOOGLER_USE_ENGINES = [
                        'Google',
-                       'Yandex',
+#                       'Yandex',
                        'Yahoo',
                        'Bing'
                        ]
+GOOGLER_FORBID_URLS = [
+                       r'www\.youtube\.com',
+                       ]
 GOOGLER_OUTPUT_DIRECTORY = 'results' # either absolute or relative to googler's top directory
 
-DEPTH_LIMIT = 5 # for each found site
+DEPTH_LIMIT = 20 # for each found site

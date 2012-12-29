@@ -6,9 +6,7 @@ from base_engine import BaseEngine
 class Bing(BaseEngine):
     def get_result_extractors(self):
         return [
-                SgmlLinkExtractor(allow_domains = ["bing.com"],
-                                  restrict_xpaths = '//div[@id="results"]'
-                                  )
+                SgmlLinkExtractor(restrict_xpaths = '//div[@class="sb_tlst"]')
                 ]
     
     def make_pages_for_query(self, query, num_of_pages):

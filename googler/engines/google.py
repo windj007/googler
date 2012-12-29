@@ -1,9 +1,10 @@
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
-import urllib
+import urllib, urlparse, re
 from base_engine import BaseEngine
 
 
 class Google(BaseEngine):
+    _REDIR_URL_RE = re.compile(r'&url=')
     def get_result_extractors(self):
         return [
                 SgmlLinkExtractor(allow_domains = ["google.ru", "google.com"],
@@ -19,3 +20,12 @@ class Google(BaseEngine):
             result.append("http://www.google.com/search?%s&newwindow=1&gbv=1&ie=UTF-8&prmd=ivns&start=%d&sa=N" % \
                           (encoded_query, 10*page))
         return result
+
+    def get_link_extractors_for_result(self, found_resource_url):
+        parsed_google_res = urlparse.urlparse(found_resource_url)
+        if Google._REDIR_URL_RE.search(found_resource_url):
+            google_params = urlparse.parse_qs(parsed_google_res.query)
+            allowed_domain = urlparse.urlparse(google_params['url']).hostname
+        else:
+            allowed_domain = parsed_google_res.hostname
+        return [SgmlLinkExtractor(allow_domains = [allowed_domain])]
