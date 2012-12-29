@@ -25,6 +25,8 @@ GOOGLER_ALLOWED_MIME = [
                         r'application/pdf',
                         ]
 
+# Please don't be scared. I use this crawler for collecting pages on various topics.
+# I do it in scientific purposes (classification)
 GOOGLER_QUERIES = [
                    'порнуха',
                    'жесткий трах смотреть онлайн бесплатно',
